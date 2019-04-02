@@ -50,8 +50,10 @@ def get_outpu_from_combination_keys():
         output = [0,1,0,0,0]
     elif 'Left' in key_combination:
         output = [1,0,0,0,0]
-    else:
+    elif 'Right':
         output = [0,0,1,0,0]
+    else:
+        output = [0, 0, 0, 0, 0]
     return output
 
 def start_detecting_keys():
