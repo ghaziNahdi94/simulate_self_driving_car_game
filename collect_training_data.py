@@ -70,14 +70,12 @@ def start_capture_frames():
     last_time = time.time()
     while True:
         image = pyscreenshot.grab((screen_x1, screen_y1, screen_x2, screen_y2))
-        image = cv2.cvtColor(np.array(image), cv2.COLOR_BGR2GRAY)
-        screen_image = cv2.resize(image, (80,60))
+        screen_image = cv2.resize(src=np.array(image), dsize=(500, 380))
         output = get_outpu_from_combination_keys()
         training_data.append([screen_image, output])
         key_pressed = 'Up'
         print('FPS : {}'.format(time.time() - last_time))
         last_time = time.time()
-
         if len(training_data) % 50 == 0:
             print(len(training_data))
             np.save(file_name, training_data)
